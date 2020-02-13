@@ -191,7 +191,6 @@ public class Controller implements Initializable {
         logArea.setText("使用方法：検索ワードを入力して検索、ダブルクリックでアイテムIDをコピー");
     }
 
-    Callback<ListView<Category>, ListCell<Category>> cellFactory;
     // CellFactory生成
     public Callback<ListView<Category>, ListCell<Category>> getCellFactory() {
         return (ListView<Category> param) -> new ListCell<>() {
