@@ -16,5 +16,7 @@ serissaユーザー向けアイテムIDの検索&コピーツール
 また、[AdoptOpenJDK](https://adoptopenjdk.net/)のバージョン11.0.6で作成しているため、jar単体版の実行にはjava11のインストールが必要になります。
 
 # その他
+不具合・要望等は[Twitter](https://twitter.com/E5uq0ptGAeS40gP)に投げてください。
+
 Q. ヘルプのアイテム検索使えばよくない？  
 A. はい。
