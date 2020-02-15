@@ -19,9 +19,9 @@ public enum WeaponCategory implements Category {
     STAFF("杖"),
     STRINGS("楽器"),
     BOOK("本"),
-    HANDBAG("ハンドバッグ"),
-    LEFT_HANDBAG("左手用ハンドバッグ"),
-    ETC_WEAPON("他の武器");
+    HANDBAG("カバン"),
+    LEFT_HANDBAG("左手用カバン"),
+    ETC_WEAPON("特殊武器");
 
     final private String name;
 

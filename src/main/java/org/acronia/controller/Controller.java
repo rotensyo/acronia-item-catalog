@@ -80,21 +80,6 @@ public class Controller implements Initializable {
         data.removeAll();
         data.setAll(tableItems);
         table.scrollTo(0);
-
-        // セルへの機能割り当て
-        /*
-        Callback<TableColumn<TableItem, String>, TableCell<TableItem, String>> existingCellFactory
-                = categoryName.getCellFactory();
-        categoryName.setCellFactory((TableColumn<TableItem, String> c) -> {
-            TableCell cell = existingCellFactory.call(c);
-            // 説明文のポップアップ表示
-            Tooltip tooltip = new Tooltip();
-            tooltip.textProperty().bind(cell.itemProperty().asString());
-            cell.setTooltip(tooltip);
-            return cell;
-        });
-         */
-
         logArea.setText("検索結果：" + data.size() + "件");
     }
 
