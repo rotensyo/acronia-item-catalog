@@ -1,7 +1,7 @@
 Acronia Item Catalog
 ====
 
-serissaユーザー向けアイテムID検索ツール
+serissaユーザー向けアイテムIDの検索&コピーツール
 
 # 使用方法
 <img src="https://user-images.githubusercontent.com/60921173/74589945-4e9f7b80-504d-11ea-8b96-e69f01629c22.png" width="70%">
@@ -12,5 +12,5 @@ serissaユーザー向けアイテムID検索ツール
 - テーブル下のチェックボックスを選択することで、アイテムIDの前に"/item "を付加した状態でコピーできます。
 
 # 動作環境
-Windows10、Java11での動作を想定しています。
-[AdoptOpenJDK](https://adoptopenjdk.net/)のバージョン11.0.6で動作確認済みです。
+実行環境同梱版、jar単体版ともにWindows10での動作を想定しています。  
+また、[AdoptOpenJDK](https://adoptopenjdk.net/)のバージョン11.0.6で作成しているため、jar単体版の実行にはjava11のインストールが必要になります。
