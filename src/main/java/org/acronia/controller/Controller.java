@@ -152,7 +152,7 @@ public class Controller implements Initializable {
                             refreshCategories(comboCategoryId, PartnerCategory.values(), "パートナー");
                             break;
                         case "furniture":
-                            refreshCategories(comboCategoryId, FurnitureCategory.values(), "飛空艇家具");
+                            refreshCategories(comboCategoryId, FurnitureCategory.values(), "飛空庭家具");
                             break;
                         case "avatar":
                             refreshCategories(comboCategoryId, AvatarCategory.values(), "アバター");
