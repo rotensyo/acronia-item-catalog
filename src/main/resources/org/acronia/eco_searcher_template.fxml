@@ -16,7 +16,7 @@
       <columns>
         <TableColumn fx:id="itemId" maxWidth="5000.0" minWidth="10.0" prefWidth="90.0" text="アイテムID" />
         <TableColumn fx:id="itemName" maxWidth="5000.0" minWidth="10.0" prefWidth="217.0" text="アイテム名" />
-        <TableColumn fx:id="categoryName" maxWidth="5000.0" minWidth="10.0" prefWidth="518.0" text="説明文" visible="true" />
+        <TableColumn fx:id="categoryName" maxWidth="5000.0" minWidth="10.0" prefWidth="421.1999816894531" text="説明文" visible="true" />
       </columns>
     </TableView>
     <TextField fx:id="query" focusTraversable="true" onKeyPressed="#onEnterPressed" prefHeight="-1.0" prefWidth="404.0" promptText="検索ワード、指定なしで全件検索" visible="true" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="172.0" AnchorPane.topAnchor="15.0" />
