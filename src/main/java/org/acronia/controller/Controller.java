@@ -77,20 +77,9 @@ public class Controller implements Initializable {
         List<TableItem> tableItems = connectSql.searchItemName(query.getText(), comboCategoryId.getValue(),
                 categoryToggle.getSelectedToggle().getUserData().toString(),
                 searchToggle.getSelectedToggle().getUserData().toString());
+        data.removeAll();
         data.setAll(tableItems);
         table.scrollTo(0);
-
-        // セルへの機能割り当て
-        Callback<TableColumn<TableItem, String>, TableCell<TableItem, String>> existingCellFactory
-                = categoryName.getCellFactory();
-        categoryName.setCellFactory(c -> {
-            TableCell cell = existingCellFactory.call(c);
-            // 説明文のポップアップ表示
-            Tooltip tooltip = new Tooltip();
-            tooltip.textProperty().bind(cell.itemProperty().asString());
-            cell.setTooltip(tooltip);
-            return cell;
-        });
         logArea.setText("検索結果：" + data.size() + "件");
     }
 
@@ -163,7 +152,7 @@ public class Controller implements Initializable {
                             refreshCategories(comboCategoryId, PartnerCategory.values(), "パートナー");
                             break;
                         case "furniture":
-                            refreshCategories(comboCategoryId, FurnitureCategory.values(), "飛空艇家具");
+                            refreshCategories(comboCategoryId, FurnitureCategory.values(), "飛空庭家具");
                             break;
                         case "avatar":
                             refreshCategories(comboCategoryId, AvatarCategory.values(), "アバター");

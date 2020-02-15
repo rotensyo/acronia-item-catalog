@@ -78,7 +78,6 @@ public class ConnectSql {
         PreparedStatement pstmt = null;
 
         if (category == null || "NULL".equals(category.toString())){
-            Category[] values;
             switch (parentCategory){
                 case "weapon":
                     pstmt = createPstmt(column, query, WeaponCategory.values(), weaponCategorySql);
