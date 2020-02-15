@@ -47,7 +47,7 @@
                 </execution>
             </executions>
             <configuration>
-                <finalName>acronia_item_catalog_full</finalName>
+                <finalName>acronia_item_catalog_full-${version}</finalName>
                 <appendAssemblyId>false</appendAssemblyId>
                 <archive>
                     <manifest>
