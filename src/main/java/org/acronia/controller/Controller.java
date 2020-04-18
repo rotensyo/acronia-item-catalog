@@ -115,6 +115,7 @@ public class Controller implements Initializable {
         itemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         categoryName.setCellValueFactory(new PropertyValueFactory<>("descriptionPlain"));
         tooltip = new Tooltip();
+        tooltip.setAutoHide(true);
         tooltip.setStyle("-fx-background-color: rgb(246, 228, 172); "
                 + "-fx-text-fill: black; "
                 + "-fx-border-color: rgb(174, 109, 54); "
@@ -122,15 +123,16 @@ public class Controller implements Initializable {
                 + "-fx-border-radius: 5; "
         );
 
-        // 全体のどこかをクリックした場合はツールチップ非表示
+        // スクロールでツールチップ非表示
         thisStage.addEventFilter(EventType.ROOT, event -> {
-            if (event.getEventType() == MouseEvent.MOUSE_CLICKED || event.getEventType() == ScrollEvent.SCROLL){
+            if (event.getEventType() == ScrollEvent.SCROLL){
                 tooltip.hide();
             }
         });
 
         // テーブルのイベント
         table.setOnMouseClicked(event -> {
+            tooltip.hide();
             boolean doubleClicked
                     = event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2;
             TableItem selected = table.getSelectionModel().selectedItemProperty().getValue();
