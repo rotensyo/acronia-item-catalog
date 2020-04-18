@@ -4,7 +4,7 @@ Acronia Item Catalog
 serissaユーザー向けアイテムIDの検索&コピーツール
 
 # 使用方法
-<img src="https://user-images.githubusercontent.com/60921173/74589945-4e9f7b80-504d-11ea-8b96-e69f01629c22.png" width="70%">
+<img src="https://user-images.githubusercontent.com/60921173/79637105-6dd69880-81b7-11ea-88d4-3bc6a8b5c1af.png" width="70%">
 
 - 検索窓に検索したいワードを入力し、Enterキーまたは検索ボタンのクリックでアイテムが検索できます。
 - 検索の際にカテゴリの絞り込みができます。装備品とパートナー、飛空庭家具、アバターアイテムに対応しています。
