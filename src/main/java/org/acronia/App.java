@@ -21,7 +21,7 @@ public class App extends Application {
         loader.setController(controller);
         Parent root = loader.load();
         primaryStage.setTitle("アイテムカタログ(アクロニア) Ver.1.0.0");
-        Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        Image icon = new Image(getClass().getResourceAsStream("new_icon.png"));
         primaryStage.getIcons().add( icon );
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
