@@ -10,13 +10,13 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" disable="false" focusTraversable="false" maxHeight="700.0" maxWidth="900.0" minHeight="571.0" minWidth="780.0" mouseTransparent="false" prefHeight="590.0" prefWidth="780.0" style="" visible="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="pane" disable="false" focusTraversable="false" maxHeight="700.0" maxWidth="900.0" minHeight="571.0" minWidth="780.0" mouseTransparent="false" prefHeight="590.0" prefWidth="780.0" style="" visible="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <TableView fx:id="table" disable="false" editable="false" opacity="1.0" prefHeight="512.0" prefWidth="850.0" style="" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="94.0">
       <columns>
-        <TableColumn fx:id="itemId" maxWidth="5000.0" minWidth="10.0" prefWidth="90.0" text="アイテムID" />
-        <TableColumn fx:id="itemName" maxWidth="5000.0" minWidth="10.0" prefWidth="217.0" text="アイテム名" />
-        <TableColumn fx:id="categoryName" maxWidth="5000.0" minWidth="10.0" prefWidth="421.1999816894531" text="説明文" visible="true" />
+        <TableColumn fx:id="itemId" editable="false" maxWidth="5000.0" minWidth="10.0" prefWidth="90.0" sortable="false" text="アイテムID" />
+        <TableColumn fx:id="itemName" editable="false" maxWidth="5000.0" minWidth="10.0" prefWidth="217.0" sortable="false" text="アイテム名" />
+        <TableColumn fx:id="categoryName" editable="false" maxWidth="5000.0" minWidth="10.0" prefWidth="421.1999816894531" sortable="false" text="説明文" visible="true" />
       </columns>
     </TableView>
     <TextField fx:id="query" focusTraversable="true" onKeyPressed="#onEnterPressed" prefHeight="-1.0" prefWidth="404.0" promptText="検索ワード、指定なしで全件検索" visible="true" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="172.0" AnchorPane.topAnchor="15.0" />

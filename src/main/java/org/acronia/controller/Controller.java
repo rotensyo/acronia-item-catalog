@@ -3,16 +3,20 @@ package org.acronia.controller;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.acronia.category.*;
 import org.acronia.dto.*;
 import org.acronia.sql.ConnectSql;
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -56,9 +60,16 @@ public class Controller implements Initializable {
     @FXML private TableColumn<TableItem, String> itemName;
     @FXML private TableColumn<TableItem, String> categoryName;
     private ObservableList<TableItem> data;
+    private Tooltip tooltip;
+    private Stage thisStage;
 
     @FXML
     private TextField logArea;
+
+    // stage注入
+    public void setThisStage(Stage stage) {
+        thisStage = stage;
+    }
 
     // テキストフィールドでエンター押下
     @FXML
@@ -103,12 +114,27 @@ public class Controller implements Initializable {
         itemId.setStyle("-fx-alignment: CENTER;");
         itemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         categoryName.setCellValueFactory(new PropertyValueFactory<>("descriptionPlain"));
+        tooltip = new Tooltip();
+        tooltip.setStyle("-fx-background-color: rgb(246, 228, 172); "
+                + "-fx-text-fill: black; "
+                + "-fx-border-color: rgb(174, 109, 54); "
+                + "-fx-background-radius: 5; "
+                + "-fx-border-radius: 5; "
+        );
 
-        // ダブルクリック時にIDをコピー
+        // 全体のどこかをクリックした場合はツールチップ非表示
+        thisStage.addEventFilter(EventType.ROOT, event -> {
+            if (event.getEventType() == MouseEvent.MOUSE_CLICKED || event.getEventType() == ScrollEvent.SCROLL){
+                tooltip.hide();
+            }
+        });
+
+        // テーブルのイベント
         table.setOnMouseClicked(event -> {
             boolean doubleClicked
                     = event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2;
             TableItem selected = table.getSelectionModel().selectedItemProperty().getValue();
+            // ダブルクリック時にアイテムIDをコピー
             if (doubleClicked && selected != null) {
                 Clipboard cb = Clipboard.getSystemClipboard();
                 ClipboardContent clipboardContent = new ClipboardContent();
@@ -119,7 +145,17 @@ public class Controller implements Initializable {
                 clipboardContent.putString(selectedItem);
                 cb.setContent(clipboardContent);
                 logArea.setText("アイテムIDコピー：" + selected.getItemName());
-
+            } else if (event.getButton().equals(MouseButton.SECONDARY) && selected != null) { // 右クリで詳細表示
+                tooltip.setText(selected.getDescription());
+                ImageView imageView = new ImageView();
+                try {
+                    imageView.setImage(new Image(getClass().getResourceAsStream("images/" + selected.getIconId() + "p.data")));
+                    tooltip.setGraphic(imageView);
+                } catch (NullPointerException ex) { // 画像がない場合
+                    imageView.setImage(new Image(getClass().getResourceAsStream("no_image.png")));
+                    tooltip.setGraphic(imageView);
+                }
+                tooltip.show(table, event.getScreenX()+10, event.getScreenY()+3);
             }
         });
 
@@ -177,7 +213,7 @@ public class Controller implements Initializable {
                         -> query.requestFocus());
 
         // 起動時メッセージ
-        logArea.setText("使用方法：検索ワードを入力して検索、ダブルクリックでアイテムIDをコピー");
+        logArea.setText("使用方法：検索結果をダブルクリックでアイテムIDをコピー、右クリックで詳細表示");
     }
 
     // CellFactory生成
@@ -202,5 +238,4 @@ public class Controller implements Initializable {
         comboCategoryId.setButtonCell(newCellFactory.call(null));
         comboCategoryId.setCellFactory(newCellFactory);
     }
-
 }
