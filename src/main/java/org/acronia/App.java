@@ -20,7 +20,7 @@ public class App extends Application {
         controller.setThisStage(primaryStage);
         loader.setController(controller);
         Parent root = loader.load();
-        primaryStage.setTitle("アイテムカタログ(アクロニア) Ver.1.0.0");
+        primaryStage.setTitle("アイテムカタログ(アクロニア) Ver.1.0.1");
         Image icon = new Image(getClass().getResourceAsStream("new_icon.png"));
         primaryStage.getIcons().add( icon );
         primaryStage.setScene(new Scene(root));
