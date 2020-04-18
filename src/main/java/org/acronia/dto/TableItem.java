@@ -7,12 +7,14 @@ public class TableItem {
     private String itemName;
     private String categoryName;
     private String description;
+    private String iconId;
 
-public TableItem(String itemId, String itemName, String categoryName, String description) {
+public TableItem(String itemId, String itemName, String categoryName, String description, String iconId) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.categoryName = categoryName;
         this.description = description;
+        this.iconId = iconId;
     }
 
     public String getDescription() {
@@ -57,5 +59,13 @@ public TableItem(String itemId, String itemName, String categoryName, String des
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public String getIconId() {
+        return iconId;
+    }
+
+    public void setIconId(String iconId) {
+        this.iconId = iconId;
     }
 }

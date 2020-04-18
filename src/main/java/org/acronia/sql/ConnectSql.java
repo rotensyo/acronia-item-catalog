@@ -36,18 +36,13 @@ public class ConnectSql {
         }
 
         // 前半部分
-        commonSql = "SELECT item_id, item_name, category_id, description FROM item WHERE ";
+        commonSql = "SELECT item_id, item_name, category_id, description, icon_id FROM item WHERE ";
 
         weaponCategorySql = createCategorySql(WeaponCategory.values().length);
-
         armorCategorySql = createCategorySql(ArmorCategory.values().length);
-
         partnerCategorySql = createCategorySql(PartnerCategory.values().length);
-
         furnitureCategorySql = createCategorySql(FurnitureCategory.values().length);
-
         avatarCategorySql = createCategorySql(AvatarCategory.values().length);
-
         demCategorySql = createCategorySql(DemCategory.values().length);
     }
 
@@ -65,7 +60,8 @@ public class ConnectSql {
             List<TableItem> tableItems = new ArrayList<>();
             while (rs.next()) {
                 tableItems.add(new TableItem(rs.getString("item_id"), rs.getString("item_name"),
-                        rs.getString("category_id"), rs.getString("description")));
+                        rs.getString("category_id"), rs.getString("description"),
+                        rs.getString("icon_id")));
             }
             return tableItems;
         }catch (SQLException ex){
@@ -98,14 +94,14 @@ public class ConnectSql {
                     pstmt = createPstmt(column, query, DemCategory.values(), demCategorySql);
                     break;
                 case "unselected":
-                    String sql = "SELECT item_id, item_name, category_id, description FROM item " +
+                    String sql = "SELECT item_id, item_name, category_id, description, icon_id FROM item " +
                             "WHERE " + column+ " LIKE ? ORDER BY category_id, item_id";
                     pstmt = connection.prepareStatement(sql);
                     pstmt.setString(1, "%" + query + "%");
                     break;
             }
         }else{
-            String sql = "SELECT item_id, item_name, category_id, description FROM item " +
+            String sql = "SELECT item_id, item_name, category_id, description, icon_id FROM item " +
                     "WHERE " + column + " LIKE ? AND category_id = ? ORDER BY category_id, item_id";
             pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, "%" + query + "%");
