@@ -13,8 +13,8 @@ serissaユーザー向けアイテムIDの検索&コピーツール
 - テーブル下のチェックボックスを選択することで、アイテムIDの前に"/item "を付加した状態でコピーできます。
 
 # 動作環境
-実行環境同梱版、jar単体版ともにWindows10での動作を想定しています。  
-また、[AdoptOpenJDK](https://adoptopenjdk.net/)のバージョン11.0.6で作成しているため、jar単体版の実行にはjava11のインストールが必要になります。
+Windows10での動作を想定しています。  
+[AdoptOpenJDK](https://adoptopenjdk.net/)のバージョン11.0.6で作成しておりますが、実行環境も同梱してあるためダウンロードしてそのまま使えます。
 
 # その他
 不具合・要望等は[Twitter](https://twitter.com/E5uq0ptGAeS40gP)に投げてください。
