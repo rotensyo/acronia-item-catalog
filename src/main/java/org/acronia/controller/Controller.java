@@ -17,15 +17,17 @@ import org.acronia.category.*;
 import org.acronia.dto.*;
 import org.acronia.sql.ConnectSql;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     private ConnectSql connectSql;
+
+    private static final Properties properties = new Properties();
 
     @FXML private ComboBox<Category> comboCategoryId;
 
@@ -218,6 +220,28 @@ public class Controller implements Initializable {
 
         // 起動時メッセージ
         logArea.setText("使用方法：検索結果をダブルクリックでアイテムIDをコピー、右クリックで詳細表示");
+
+        // コマンドに/itemをつけるかの設定を読み込む
+        try(FileInputStream f = new FileInputStream("setting.conf");
+            BufferedInputStream b = new BufferedInputStream(f)){
+                properties.load(b);
+                if("true".equals(properties.getProperty("commandFlag"))){
+                    commandFlag.setSelected(true);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // 終了時に設定を保存
+        thisStage.showingProperty().addListener((observable, oldValue, newValue) -> {
+            try(FileOutputStream f = new FileOutputStream("setting.conf");
+                BufferedOutputStream b = new BufferedOutputStream(f)){
+                    properties.setProperty("commandFlag", String.valueOf(commandFlag.isSelected()));
+                    properties.store(b, "setting");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     // CellFactory生成
