@@ -27,6 +27,8 @@ public class ConnectSql {
 
     private String commonSql;
 
+    private String iconSql;
+
     public ConnectSql(){
         try {
             Class.forName("org.sqlite.JDBC");
@@ -44,6 +46,7 @@ public class ConnectSql {
         furnitureCategorySql = createCategorySql(FurnitureCategory.values().length);
         avatarCategorySql = createCategorySql(AvatarCategory.values().length);
         demCategorySql = createCategorySql(DemCategory.values().length);
+        iconSql = "SELECT image_bin FROM image WHERE pict_id = ?";
     }
 
     // 後半部分
@@ -64,6 +67,18 @@ public class ConnectSql {
                         rs.getString("icon_id")));
             }
             return tableItems;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public byte[] searchImage(String iconId) {
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(iconSql);
+            pstmt.setString(1, iconId);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.getBytes("image_bin");
         }catch (SQLException ex){
             ex.printStackTrace();
             return null;

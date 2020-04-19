@@ -11,12 +11,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.acronia.category.*;
 import org.acronia.dto.*;
 import org.acronia.sql.ConnectSql;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -151,7 +153,7 @@ public class Controller implements Initializable {
                 tooltip.setText(selected.getDescription());
                 ImageView imageView = new ImageView();
                 try {
-                    imageView.setImage(new Image(getClass().getResourceAsStream("images/" + selected.getIconId() + "p.data")));
+                    imageView.setImage(new Image(new ByteArrayInputStream(connectSql.searchImage(selected.getIconId()))));
                     tooltip.setGraphic(imageView);
                 } catch (NullPointerException ex) { // 画像がない場合
                     imageView.setImage(new Image(getClass().getResourceAsStream("no_image.png")));
