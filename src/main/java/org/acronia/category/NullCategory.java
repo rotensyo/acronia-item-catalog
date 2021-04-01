@@ -1,7 +1,8 @@
 package org.acronia.category;
 
 public enum NullCategory implements Category {
-    NULL("指定なし");
+    NULL("全アイテム"),
+    SERISSA("serissa使用可能");
 
     final private String name;
 

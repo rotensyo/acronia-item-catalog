@@ -7,7 +7,10 @@ import org.apache.commons.lang.StringUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ConnectSql {
 
@@ -24,6 +27,8 @@ public class ConnectSql {
     private String avatarCategorySql;
 
     private String demCategorySql;
+
+    private String serissaCategorySql;
 
     private String commonSql;
 
@@ -46,6 +51,7 @@ public class ConnectSql {
         furnitureCategorySql = createCategorySql(FurnitureCategory.values().length);
         avatarCategorySql = createCategorySql(AvatarCategory.values().length);
         demCategorySql = createCategorySql(DemCategory.values().length);
+        serissaCategorySql = createCategorySql(ArmorCategory.values().length + WeaponCategory.values().length + PartnerCategory.values().length + FurnitureCategory.values().length + AvatarCategory.values().length);
         iconSql = "SELECT image_bin FROM image WHERE pict_id = ?";
     }
 
@@ -87,8 +93,7 @@ public class ConnectSql {
 
     public PreparedStatement createSql(String query, Category category, String parentCategory, String column) throws SQLException{
         PreparedStatement pstmt = null;
-
-        if (category == null || "NULL".equals(category.toString())){
+        if (category == null || "NULL".equals(category.toString())){  // サブカテゴリ未選択か"NULL"
             switch (parentCategory){
                 case "weapon":
                     pstmt = createPstmt(column, query, WeaponCategory.values(), weaponCategorySql);
@@ -115,12 +120,16 @@ public class ConnectSql {
                     pstmt.setString(1, "%" + query + "%");
                     break;
             }
-        }else{
-            String sql = "SELECT item_id, item_name, category_id, description, icon_id FROM item " +
-                    "WHERE " + column + " LIKE ? AND category_id = ? ORDER BY category_id, item_id";
-            pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, "%" + query + "%");
-            pstmt.setString(2, category.toString());
+        } else {  // サブカテゴリに何かしらが入っている
+            if ("SERISSA".equals(category.toString())) {
+                pstmt = createPstmt(column, query, Stream.of(Arrays.asList(ArmorCategory.values()), Arrays.asList(WeaponCategory.values()), Arrays.asList(PartnerCategory.values()), Arrays.asList(FurnitureCategory.values()), Arrays.asList(AvatarCategory.values())).flatMap(Collection::stream).toArray(Category[]::new), serissaCategorySql);
+            } else {
+                String sql = "SELECT item_id, item_name, category_id, description, icon_id FROM item " +
+                        "WHERE " + column + " LIKE ? AND category_id = ? ORDER BY category_id, item_id";
+                pstmt = connection.prepareStatement(sql);
+                pstmt.setString(1, "%" + query + "%");
+                pstmt.setString(2, category.toString());
+            }
         }
         return pstmt;
     }

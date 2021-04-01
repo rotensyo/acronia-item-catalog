@@ -221,7 +221,6 @@ public class Controller implements Initializable {
         comboCategoryId.valueProperty().addListener(
                 (ObservableValue<? extends Category> observable, Category oldValue, Category newValue)
                         -> query.requestFocus());
-
         // 起動時メッセージ
         logArea.setText("使用方法：検索結果をダブルクリックでアイテムIDをコピー、右クリックで詳細表示");
 
@@ -255,7 +254,7 @@ public class Controller implements Initializable {
             protected void updateItem(Category item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
-                    setText(null);
+                    setText("");
                  } else {
                     setText(item.getName());
                 }
