@@ -178,6 +178,10 @@ public class Controller implements Initializable {
         rubyButton.setUserData("ruby");
 
         // カテゴリ選択ボックスの初期化
+        Callback<ListView<Category>, ListCell<Category>> newCellFactory = getCellFactory();
+        comboCategoryId.setCellFactory(newCellFactory);
+        comboCategoryId.setButtonCell(newCellFactory.call(null));
+
         refreshCategories(comboCategoryId, NullCategory.values(), "カテゴリ");
 
         // カテゴリリスト更新
@@ -250,20 +254,21 @@ public class Controller implements Initializable {
             @Override
             protected void updateItem(Category item, boolean empty) {
                 super.updateItem(item, empty);
-                if (item != null && !empty) {
+                if (empty || item == null) {
+                    setText(null);
+                 } else {
                     setText(item.getName());
                 }
+                setGraphic(null);
             }
         };
     }
 
     // カテゴリメニュー更新
-    public void refreshCategories(ComboBox<Category> comboCategoryId, Category[] categoryValues, String prompt){
-        Callback<ListView<Category>, ListCell<Category>> newCellFactory = getCellFactory();
-        comboCategoryId.getItems().removeAll();
-        comboCategoryId.setItems(FXCollections.observableArrayList(categoryValues));
+    public void refreshCategories(ComboBox<Category> comboCategoryId, Category[] categoryValues, String prompt) {
+        comboCategoryId.getItems().clear();
+        comboCategoryId.getItems().addAll(categoryValues);
         comboCategoryId.setPromptText(prompt);
-        comboCategoryId.setButtonCell(newCellFactory.call(null));
-        comboCategoryId.setCellFactory(newCellFactory);
+        comboCategoryId.setButtonCell(comboCategoryId.getCellFactory().call(null));
     }
 }
