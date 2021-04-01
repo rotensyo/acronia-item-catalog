@@ -10,7 +10,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" disable="false" focusTraversable="false" maxHeight="700.0" maxWidth="900.0" minHeight="571.0" minWidth="780.0" mouseTransparent="false" prefHeight="590.0" prefWidth="780.0" style="" visible="true" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.acronia.controller.Controller">
+<AnchorPane fx:id="pane" disable="false" focusTraversable="false" maxHeight="700.0" maxWidth="900.0" minHeight="571.0" minWidth="780.0" mouseTransparent="false" prefHeight="590.0" prefWidth="780.0" style="" visible="true" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <TableView fx:id="table" disable="false" editable="false" opacity="1.0" prefHeight="512.0" prefWidth="850.0" style="" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="94.0">
       <columns>
