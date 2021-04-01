@@ -86,9 +86,9 @@ public class Controller implements Initializable {
     // 検索ボタン押下
     @FXML
     private void onSearchButtonClick() {
-        System.out.println("query:" + query.getText());
-        System.out.println("category:" + comboCategoryId.getValue());
-        System.out.println("parent:" + categoryToggle.getSelectedToggle().getUserData());
+        // System.out.println("query:" + query.getText());
+        // System.out.println("category:" + comboCategoryId.getValue());
+        // System.out.println("parent:" + categoryToggle.getSelectedToggle().getUserData());
         List<TableItem> tableItems = connectSql.searchItemName(query.getText(), comboCategoryId.getValue(),
                 categoryToggle.getSelectedToggle().getUserData().toString(),
                 searchToggle.getSelectedToggle().getUserData().toString());

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" disable="false" focusTraversable="false" maxHeight="700.0" maxWidth="900.0" minHeight="571.0" minWidth="780.0" mouseTransparent="false" prefHeight="590.0" prefWidth="780.0" style="" visible="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="pane" disable="false" focusTraversable="false" maxHeight="700.0" maxWidth="900.0" minHeight="571.0" minWidth="780.0" mouseTransparent="false" prefHeight="590.0" prefWidth="780.0" style="" visible="true" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.acronia.controller.Controller">
   <children>
     <TableView fx:id="table" disable="false" editable="false" opacity="1.0" prefHeight="512.0" prefWidth="850.0" style="" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="94.0">
       <columns>
@@ -28,18 +28,18 @@
         <ToggleGroup fx:id="searchToggle" />
       </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="descriptionButton" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="説明文検索" toggleGroup="$searchToggle" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="60.0" />
-    <RadioButton fx:id="weaponButton" layoutX="96.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" selected="false" text="武器" AnchorPane.leftAnchor="96.0" AnchorPane.topAnchor="60.0">
+    <RadioButton fx:id="descriptionButton" layoutX="579.4" layoutY="60.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="説明文検索" toggleGroup="$searchToggle" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="60.0" />
+    <RadioButton fx:id="weaponButton" layoutX="99.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" selected="false" text="武器" AnchorPane.leftAnchor="99.0" AnchorPane.topAnchor="60.0">
       <toggleGroup>
         <ToggleGroup fx:id="categoryToggle" />
       </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="armorButton" layoutX="147.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="防具" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="147.0" AnchorPane.topAnchor="60.0" />
-    <RadioButton fx:id="partnerButton" layoutX="198.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="パートナー" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="60.0" />
+    <RadioButton fx:id="armorButton" layoutX="154.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="防具" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="60.0" />
+    <RadioButton fx:id="partnerButton" layoutX="209.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="パートナー" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="209.0" AnchorPane.topAnchor="60.0" />
     <RadioButton fx:id="unselectedButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" selected="true" text="指定なし" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="60.0" />
     <TextField fx:id="logArea" editable="false" focusTraversable="true" opacity="0.95" prefHeight="28.0" prefWidth="850.0" text="" visible="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
-    <RadioButton fx:id="furnitureButton" layoutX="268.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="家具" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="60.0" />
-    <RadioButton fx:id="avatarButton" layoutX="318.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="アバター" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="318.0" AnchorPane.topAnchor="60.0" />
+    <RadioButton fx:id="furnitureButton" layoutX="276.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="家具" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="276.0" AnchorPane.topAnchor="60.0" />
+    <RadioButton fx:id="avatarButton" layoutX="331.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="アバター" toggleGroup="$categoryToggle" AnchorPane.leftAnchor="331.0" AnchorPane.topAnchor="60.0" />
     <RadioButton fx:id="demButton" layoutX="480.0" layoutY="60.0" mnemonicParsing="false" text="DEM" toggleGroup="$categoryToggle" visible="false" />
     <CheckBox fx:id="commandFlag" mnemonicParsing="false" text="コピー時に/itemを付加" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="25.0" />
     <RadioButton fx:id="rubyButton" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="ふりがな検索" toggleGroup="$searchToggle" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="60.0" />
